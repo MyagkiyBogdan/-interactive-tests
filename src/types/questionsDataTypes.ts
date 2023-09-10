@@ -3,3 +3,9 @@ export type QuestionsData = {
   answers: string[];
   correct: number;
 }[];
+
+export interface Question {
+  questionText: string;
+  answers: string[];
+  correct: number;
+}

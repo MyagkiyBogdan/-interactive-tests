@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { questionsData } from "../../testData/questionsData";
+import { questionsData } from "../../questionsData/questionsData";
 import styles from "./QuizApp.module.css";
-
-interface Question {
-  questionText: string;
-  answers: string[];
-  correct: number;
-}
+import { answerColors } from "utils/answerColors";
+import { Question } from "types/questionsDataTypes";
 
 const QuizApp: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>(questionsData);
@@ -58,11 +54,20 @@ const QuizApp: React.FC = () => {
       {!showResult ? (
         <div className={styles.questionContainer}>
           <p>{currentQuestion.questionText}</p>
-          {currentQuestion.answers.map((answer, index) => (
-            <button key={index} onClick={() => handleAnswerClick(index)}>
-              {answer}
-            </button>
-          ))}
+          <div className={styles.answerContainer}>
+            {currentQuestion.answers.map((answer, index) => (
+              <div key={index} className={styles.answerItem}>
+                <button
+                  onClick={() => handleAnswerClick(index)}
+                  style={{
+                    backgroundColor: answerColors[index % answerColors.length],
+                  }}
+                >
+                  {answer}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
         <div className={styles.resultContainer}>
@@ -76,14 +81,12 @@ const QuizApp: React.FC = () => {
         <button
           onClick={handlePreviousClick}
           disabled={currentQuestionIndex === 0}
-          className={`${styles.quizButton} ${styles.button}`}
         >
           Предыдущий вопрос
         </button>
         <button
           onClick={handleNextClick}
           disabled={showResult || currentQuestionIndex === questions.length - 1}
-          className={`${styles.quizButton} ${styles.button}`}
         >
           {showResult ? "Начать заново" : "Следующий вопрос"}
         </button>
