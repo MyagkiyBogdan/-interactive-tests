@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/interactive-tests/static/css/main.f60ab6c8.css",
+    "main.js": "/interactive-tests/static/js/main.320df205.js",
+    "index.html": "/interactive-tests/index.html",
+    "main.f60ab6c8.css.map": "/interactive-tests/static/css/main.f60ab6c8.css.map",
+    "main.320df205.js.map": "/interactive-tests/static/js/main.320df205.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f60ab6c8.css",
+    "static/js/main.320df205.js"
+  ]
+}
