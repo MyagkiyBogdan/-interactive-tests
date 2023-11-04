@@ -1,0 +1,36 @@
+.header {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+.header-nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-link-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-link-button {
+  width: 100px;
+}
+
+.header-link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #3498db;
+  min-width: 85px;
+}
