@@ -1,0 +1,14 @@
+.multipleChoiceFormContainer {
+  max-width: 330px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.multipleChoiceFormLabel {
+  font-weight: bold;
+}
+
+.multipleChoiceFormSubmitButton {
+  margin-top: 20px;
+}

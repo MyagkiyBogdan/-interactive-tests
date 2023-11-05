@@ -1,0 +1,14 @@
+.fillInTheBlanksFormContainer {
+  max-width: 330px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.fillInTheBlanksFormLabel {
+  font-weight: bold;
+}
+
+.fillInTheBlanksFormSubmitButton {
+  margin-top: 20px;
+}

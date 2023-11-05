@@ -1,0 +1,23 @@
+.matchingFormContainer {
+  max-width: 330px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.matchingFormHeader {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.matchingFormItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.matchingFormSubmitButton {
+  margin-top: 20px;
+}

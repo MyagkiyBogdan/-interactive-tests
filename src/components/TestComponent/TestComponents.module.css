@@ -49,10 +49,6 @@ button {
   cursor: pointer;
 }
 
-.resultContainer {
-  margin-top: 20px;
-}
-
 .buttonContainer {
   display: flex;
   justify-content: space-between;

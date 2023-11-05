@@ -28,7 +28,7 @@ const Header = () => {
                 Тестування
               </Link>
               {userRole === USER_ROLE.Teacher && (
-                <Link to="/mytests" className="header-link">
+                <Link to="/create-tests" className="header-link">
                   Створити тести
                 </Link>
               )}

@@ -1,0 +1,34 @@
+.trueFalseFormContainer {
+  max-width: 330px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.trueFalseFormHeader {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.trueFalseFormLabel {
+  font-weight: bold;
+}
+
+.trueFalseFormOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trueFalseFormRadioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.trueFalseFormSubmitButton {
+  margin-top: 20px;
+}

@@ -4,10 +4,12 @@ import QuizApp from "./components/QuizApp/QuizApp";
 import LoginPage from "pages/LoginPage";
 import RedirectToLogin from "pages/RedirectLogin";
 import RegistrationPage from "pages/RegistrationPage";
-import MyTestsPage from "pages/MyTests";
+
 import Header from "components/Header/Header";
 import { PrivateRoute } from "components/PrivateRoute";
 import { PublicRoute } from "components/PublicRoute";
+import CreateTestsPage from "pages/CreateTestsPage";
+import SingleTestCreationPage from "pages/SingleTestCreationPage";
 
 function App() {
   return (
@@ -31,10 +33,18 @@ function App() {
           }
         />
         <Route
-          path="/mytests"
+          path="/create-tests"
           element={
             <PrivateRoute>
-              <MyTestsPage />
+              <CreateTestsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-tests/:id"
+          element={
+            <PrivateRoute>
+              <SingleTestCreationPage />
             </PrivateRoute>
           }
         />

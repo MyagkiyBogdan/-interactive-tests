@@ -1,0 +1,32 @@
+.sequencingFormContainer {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+
+.sequencingFormItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sequencingFormItem label {
+  margin-right: 10px;
+}
+
+.sequencingFormOrder {
+  width: 60px;
+  margin-left: 10px;
+  margin-top: -20px;
+}
+
+.errorText {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.sequencingFormSubmitButton {
+  margin-top: 20px;
+}
