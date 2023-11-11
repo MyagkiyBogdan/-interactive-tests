@@ -115,6 +115,10 @@ function SequencingForm({ type }: SequencingFormProps) {
                     <FormControl
                       component="fieldset"
                       className="sequencingFormOrder"
+                      sx={{
+                        width: "50px",
+                        marginTop: "-20px",
+                      }}
                     >
                       <FormLabel component="legend">Порядок</FormLabel>
                       <TextField
@@ -124,6 +128,11 @@ function SequencingForm({ type }: SequencingFormProps) {
                         margin="normal"
                         inputProps={{ maxLength: 1 }}
                         value={values.order[index] || ""}
+                        sx={{
+                          "& .MuiInputBase-root": {
+                            paddingLeft: "5px",
+                          },
+                        }}
                         onChange={(e) => {
                           const newOrder = e.target.value;
                           if (

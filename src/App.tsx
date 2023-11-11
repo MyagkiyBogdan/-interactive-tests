@@ -10,6 +10,7 @@ import { PrivateRoute } from "components/PrivateRoute";
 import { PublicRoute } from "components/PublicRoute";
 import CreateTestsPage from "pages/CreateTestsPage";
 import SingleTestCreationPage from "pages/SingleTestCreationPage";
+import StatisticPage from "pages/StatisticPage";
 
 function App() {
   return (
@@ -53,6 +54,14 @@ function App() {
           element={
             <PrivateRoute>
               <QuizApp />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/statistic"
+          element={
+            <PrivateRoute>
+              <StatisticPage />
             </PrivateRoute>
           }
         />

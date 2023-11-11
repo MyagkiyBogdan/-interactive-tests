@@ -1,7 +1,6 @@
 import React from "react";
-import { SingleChoiceQuestion } from "types/questionsDataTypes";
+import { TrueFalseQuestion } from "types/questionsDataTypes";
 import styles from "./TestComponents.module.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   setUserAnswers,
@@ -9,22 +8,23 @@ import {
   selectIsTestCompleted,
 } from "redux/testsSlice";
 
-type SingleChoiceTestProps = {
-  question: SingleChoiceQuestion;
+type TrueFalseChoiceTestProps = {
+  question: TrueFalseQuestion;
   currentQuestionIndex: number;
 };
 
-const SingleChoiceTest: React.FC<SingleChoiceTestProps> = ({
+const TrueFalseChoiceTest: React.FC<TrueFalseChoiceTestProps> = ({
   question: {
-    data: { question, options, correct_answer },
+    data: { question, correct_answer },
   },
   currentQuestionIndex,
 }) => {
   const dispatch = useDispatch();
   const userAnswers = useSelector(selectUserAnswers);
+  const selectedAnswer = userAnswers[currentQuestionIndex] || null;
   const isTestCompleted = useSelector(selectIsTestCompleted);
 
-  const updateUserAnswer = (answer: any) => {
+  const updateUserAnswer = (answer: string) => {
     dispatch(
       setUserAnswers({
         testIndex: currentQuestionIndex,
@@ -38,7 +38,7 @@ const SingleChoiceTest: React.FC<SingleChoiceTestProps> = ({
       {isTestCompleted && <p>Правильна відповідь обведена червоним</p>}
       <p>{question}:</p>
       <div className={styles.answerContainer}>
-        {options.map((answer, index) => (
+        {["true", "false"].map((answer, index) => (
           <div key={index} className={styles.answerItem}>
             <button
               onClick={
@@ -48,11 +48,9 @@ const SingleChoiceTest: React.FC<SingleChoiceTestProps> = ({
               }
               style={{
                 backgroundColor:
-                  userAnswers[currentQuestionIndex] === answer
-                    ? "#2ecc71"
-                    : "#3498db",
+                  selectedAnswer === answer ? "#2ecc71" : "#3498db",
                 border:
-                  isTestCompleted && index === correct_answer
+                  isTestCompleted && answer === String(correct_answer)
                     ? "3px solid #e74c3c"
                     : "none",
               }}
@@ -66,4 +64,4 @@ const SingleChoiceTest: React.FC<SingleChoiceTestProps> = ({
   );
 };
 
-export default SingleChoiceTest;
+export default TrueFalseChoiceTest;

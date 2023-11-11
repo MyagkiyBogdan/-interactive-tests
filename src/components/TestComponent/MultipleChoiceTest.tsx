@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { MultipleChoiceQuestion } from "types/questionsDataTypes";
 import styles from "./TestComponents.module.css";
-import { useDispatch } from "react-redux";
-import { setUserAnswers } from "redux/testsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setUserAnswers,
+  selectUserAnswers,
+  selectIsTestCompleted,
+} from "redux/testsSlice";
 
 type MultipleChoiceTestProps = {
   question: MultipleChoiceQuestion;
@@ -11,19 +15,19 @@ type MultipleChoiceTestProps = {
 
 const MultipleChoiceTest: React.FC<MultipleChoiceTestProps> = ({
   question: {
-    data: { question, options },
+    data: { question, options, correct_answers },
   },
   currentQuestionIndex,
 }) => {
   const dispatch = useDispatch();
-  const [selectedAnswers, setSelectedAnswers] = useState<boolean[]>(
-    new Array(options.length).fill(false)
-  );
+  const userAnswers = useSelector(selectUserAnswers);
+  const selectedAnswers =
+    userAnswers[currentQuestionIndex] || new Array(options.length).fill(false);
+  const isTestCompleted = useSelector(selectIsTestCompleted);
 
   const updateUserAnswers = (answerIndex: number) => {
     const newSelectedAnswers = [...selectedAnswers];
     newSelectedAnswers[answerIndex] = !newSelectedAnswers[answerIndex];
-    setSelectedAnswers(newSelectedAnswers);
     dispatch(
       setUserAnswers({
         testIndex: currentQuestionIndex,
@@ -34,6 +38,7 @@ const MultipleChoiceTest: React.FC<MultipleChoiceTestProps> = ({
 
   return (
     <div className={styles.questionContainer}>
+      {isTestCompleted && <p>Правильні варіанти обведени червоним</p>}
       <p>{question}:</p>
       <div className={styles.answerContainer}>
         {options.map((answer, index) => (
@@ -42,9 +47,25 @@ const MultipleChoiceTest: React.FC<MultipleChoiceTestProps> = ({
               <input
                 type="checkbox"
                 checked={selectedAnswers[index]}
-                onChange={() => updateUserAnswers(index)}
+                onChange={
+                  isTestCompleted
+                    ? () => undefined
+                    : () => updateUserAnswers(index)
+                }
               />
-              {answer}
+              <span
+                style={{
+                  border:
+                    isTestCompleted && correct_answers[index]
+                      ? "2px solid red"
+                      : "none",
+                  padding: "2px",
+                  borderRadius: "4px",
+                  marginRight: "4px",
+                }}
+              >
+                {answer}
+              </span>
             </label>
           </div>
         ))}

@@ -1,11 +1,19 @@
 import { TEST_TYPE } from "constants/testsConstants";
 import {
+  FillInTheBlanksQuestion,
+  MatchingQuestion,
   MultipleChoiceQuestion,
+  SequencingQuestion,
   SingleChoiceQuestion,
   SingleQuestion,
+  TrueFalseQuestion,
 } from "types/questionsDataTypes";
 import SingleChoiceTest from "./SingleChoiseTest";
 import MultipleChoiceTest from "./MultipleChoiceTest";
+import TrueFalseChoiceTest from "./TrueFalseChoiceTest";
+import FillInTheBlanksTest from "./FillInBlanksTest";
+import SequencingTest from "./SequencingTest";
+import MatchingTest from "./MatchingTest";
 
 type TestComponentProps = {
   currentQuestion: SingleQuestion;
@@ -35,20 +43,38 @@ const TestComponent: React.FC<TestComponentProps> = ({
         />
       );
       break;
-    // case TEST_TYPE.TRUE_FALSE_TEST:
-    //   renderedComponent = <TrueFalseTest question={currentQuestion.data} />;
-    //   break;
-    // case TEST_TYPE.FILL_IN_THE_BLANKS_TEST:
-    //   renderedComponent = (
-    //     <FillInTheBlanksTest question={currentQuestion.data} />
-    //   );
-    //   break;
-    // case TEST_TYPE.SEQUENCING_TEST:
-    //   renderedComponent = <SequencingTest question={currentQuestion.data} />;
-    //   break;
-    // case TEST_TYPE.MATCHING_TEST:
-    //   renderedComponent = <MatchingTest question={currentQuestion.data} />;
-    //   break;
+    case TEST_TYPE.TRUE_FALSE_TEST:
+      renderedComponent = (
+        <TrueFalseChoiceTest
+          question={currentQuestion as TrueFalseQuestion}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+      );
+      break;
+    case TEST_TYPE.FILL_IN_THE_BLANKS_TEST:
+      renderedComponent = (
+        <FillInTheBlanksTest
+          question={currentQuestion as FillInTheBlanksQuestion}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+      );
+      break;
+    case TEST_TYPE.SEQUENCING_TEST:
+      renderedComponent = (
+        <SequencingTest
+          question={currentQuestion as SequencingQuestion}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+      );
+      break;
+    case TEST_TYPE.MATCHING_TEST:
+      renderedComponent = (
+        <MatchingTest
+          question={currentQuestion as MatchingQuestion}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+      );
+      break;
     default:
       break;
   }

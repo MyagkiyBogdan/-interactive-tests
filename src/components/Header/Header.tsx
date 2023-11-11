@@ -7,6 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { USER_ROLE } from "constants/userConstants";
+import { resetTestsState } from "redux/testsSlice";
 
 const Header = () => {
   const loggedIn = useSelector(selectLoggedIn);
@@ -16,6 +17,7 @@ const Header = () => {
   const handleLogout = () => {
     //@ts-ignore
     dispatch(logoutUser());
+    dispatch(resetTestsState());
   };
 
   return (
@@ -25,7 +27,9 @@ const Header = () => {
           <div className="header-nav-wrapper">
             <div className="header-link-wrapper">
               <Link to="/testing" className="header-link">
-                Тестування
+                {userRole === USER_ROLE.Teacher
+                  ? "Тести та статистика"
+                  : "Тестування"}
               </Link>
               {userRole === USER_ROLE.Teacher && (
                 <Link to="/create-tests" className="header-link">
