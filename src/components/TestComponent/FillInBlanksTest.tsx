@@ -46,7 +46,7 @@ const FillInTheBlanksTest: React.FC<FillInTheBlanksTestProps> = ({
               ? () => undefined
               : (e) => updateUserAnswer(e.target.value)
           }
-          placeholder={missing_word}
+          placeholder={"Пропущене слово"}
           variant="standard"
         />
         {" - "}
